@@ -4,6 +4,7 @@ compose.yaml
 
 # contents in "out" are not tracked; use the Biopharma_Shared_Space for contents to be shared with colleagues
 out/**
+!out/README.md
 
 # mac files
 **/.DS_Store
