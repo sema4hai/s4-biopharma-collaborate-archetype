@@ -1,0 +1,3 @@
+FROM jupyter/datascience-notebook:latest
+
+RUN pip3 install arrow & pip3 install psycopg2-binary

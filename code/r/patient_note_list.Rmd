@@ -1,0 +1,43 @@
+---
+title: "Lysosomal Storage Disease patient notes list"
+html_document:
+    df_print: paged
+author: Aaron Zhang, Biopharma
+---
+
+The goal of this notebook is to demonstrate how to access database, and read/write to the shared workspace.
+
+## Load libraries and Connect to database
+```{r message=FALSE}
+library(tidyverse)
+library(glue)
+library(lubridate)
+library(readxl)
+require(DBI)
+require(RPostgres)
+require(gridExtra)
+dsca <- DBI::dbConnect(RPostgres::Postgres(), 
+                       host=Sys.getenv('DSCA_PHI_HOST'), 
+                       dbname = Sys.getenv('DSCA_PHI_DBNAME'), 
+                       port = Sys.getenv('DSCA_PHI_PORT'), 
+                       user=Sys.getenv('DSCA_PHI_USERNAME'),
+                       password= Sys.getenv('DSCA_PHI_PASSWORD'))
+```
+
+## Find patients
+```{r}
+patient_list <- dbGetQuery(dsca, statement = "select medical_record_number , gender, race, date_of_birth  from prod_msdw.d_person dp limit 6;")
+patient_list
+```
+Write to Biopharma_Shared_Workspace.
+```{r}
+write.csv(patient_list, file = "/Biopharma_Shared_Workspace/s4-biopharma-collaborate-architype/az_patient_list.csv")
+```
+
+Read from Biopharma_Shared_Workspace.
+```{r}
+patient_list <- read.csv(file = "/Biopharma_Shared_Workspace/s4-biopharma-collaborate-architype/az_patient_list.csv")
+patient_list
+```
+
+

@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  rstudio:
+    build:
+      context: .
+      dockerfile: ./Dockerfile_custom_RStudio
+    ports:
+      - "8787:8787"
+    volumes:
+      # mount current repo to a Docker folder under root directory
+      - .:/s4-biopharma-collaborate_architype
+      # mount Biopharma_Shared_Workspace to a Docker folder under root directory
+      # TODO: switch to PHI-compliant, e.g. a SharePoint folder, in future
+      # make sure you have access to the shared workspace
+      - { PATH TO YOUR ONEDRIVE }/Biopharma_Shared_Workspace:/Biopharma_Shared_Workspace
+    environment:
+      # disable authentication
+      - DISABLE_AUTH=true
+      # pass database (DSCA PHI) credential as environment variables
+      - DSCA_PHI_HOST={ host }
+      - DSCA_PHI_PORT={ port }
+      - DSCA_PHI_DBNAME={ database name }
+      - DSCA_PHI_USERNAME={ username }
+      - DSCA_PHI_PASSWORD={ password }
+    container_name: "Biopharma_RStudio"
+
+  jupyter:
+    build:
+      context: .
+      dockerfile: ./Dockerfile_custom_Jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/s4-biopharma-collaborate_architype
+      - { PATH TO YOUR ONEDRIVE }/Biopharma_Shared_Workspace:/Biopharma_Shared_Workspace
+    environment:
+      - DSCA_PHI_HOST={ host }
+      - DSCA_PHI_PORT={ port }
+      - DSCA_PHI_DBNAME={ database name }
+      - DSCA_PHI_USERNAME={ username }
+      - DSCA_PHI_PASSWORD={ password }
+    container_name: "Biopharma_Jupyter"
