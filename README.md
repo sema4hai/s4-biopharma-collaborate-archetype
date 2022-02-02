@@ -1,11 +1,11 @@
-# s4-biopharma-lsd
-The repo contains code for the analysis of lysosomal storage diseases in our database. 
+# s4-biopharma-collaborate-architype
+The repo contains code for the analysis of lysosomal storage diseases in our database. It is intended to be an example for collaborative data science so it will not be used to support an actual project. 
 
 ## How to contribute
 
 Start RStudio and/or Jupyter Notebook with Docker. Install Docker Desktop if you do not have it installed yet. Also install OneDrive and keep it running. You should have been shared with a OneDrive folder called "Biopharma_Shared_Workspace", which is a shared workspace for exchanging data.
 
-1. Replace the placeholders in "compose_template.yaml" with your information and save the file as "compose.yaml". 
+1. Replace the placeholders in "compose_template.yaml" with your information and save the file as "compose.yaml". Do not change the "compose_template.yaml" file (except if you really want to contribute to it). Never put your database credentials into "compose_template.yaml".  
 
 2. In your terminal, cd into the current repository and run the following command to start RStudio and/or Jupyter Notebook. 
     ```bash
@@ -37,3 +37,10 @@ In your terminal, run the following command to start port forwarding:
 ssh -N -L 2345:{database url}:{database port, e.g. 5439} -i {path to your private key} {user name on bastion host}@{url of bastion host}
 ```
 Keep it running while you are developing your code. Check the process is not broken if you fail to log into the database. 
+
+### What if my file path has spaces in them?
+Docker compose does not work well for file paths with spaces in them. In this case, you can create a soft link to your paths with the following script:
+```bash 
+ln -s {original path} {new path}
+```
+For details, read the manual at `man ln`.
