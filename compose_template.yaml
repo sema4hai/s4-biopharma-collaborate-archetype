@@ -10,8 +10,7 @@ services:
       # mount current repo to a Docker folder under root directory
       - .:/s4-biopharma-collaborate_architype
       # mount Biopharma_Shared_Workspace to a Docker folder under root directory
-      # TODO: switch to PHI-compliant, e.g. a SharePoint folder, in future
-      # make sure you have access to the shared workspace
+      # make sure you have access to the shared workspace if using OneDrive
       - { PATH TO YOUR ONEDRIVE/SharePoint }/Biopharma_Shared_Workspace:/Biopharma_Shared_Workspace
     environment:
       # disable authentication
