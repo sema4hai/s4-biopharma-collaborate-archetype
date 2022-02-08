@@ -1,7 +1,11 @@
 # s4-biopharma-collaborate-architype
 The repo contains code for the analysis of lysosomal storage diseases in our database. It is intended to be an example for collaborative data science so it will not be used to support an actual project. 
 
-## How to contribute
+The repo uses Docker and OneDrive/SharePoint to allow code sharing and data sharing during a data science project. It uses a docker compose file to start an RStudio server app and/or Jupyter Notebook app. The approach ensures that everyone has the identical development environment, including R/Python versions and third party packages. Both the code directory and data directory are mounted to the Docker containers, allowing everyone using the same absolute file path during development and maximize reproducibility with minimal code refactoring. 
+
+To use the repo structure for an actual project, copy all the files within this repo (including .gitignore but excluding .git) to your project repo, or download the latest release and rename the folder as desired.
+
+## How to use
 
 Start RStudio and/or Jupyter Notebook with Docker. Install Docker Desktop if you do not have it installed yet. Also install OneDrive and keep it running. You should have been shared with a OneDrive folder called "Biopharma_Shared_Workspace", which is a shared workspace for exchanging data.
 
@@ -46,4 +50,4 @@ ln -s {original path} {new path}
 For details, read the manual at `man ln`.
 
 ### How to mount SharePoint folder in a Docker image?
-If you want to use SharePoint instead of OneDrive as the shared workspace, first create such a folder under one SharePoint site. Log into Office 365, open OneDrive and from there find a SharePoint site on the left navigation part. Then you will be able to see "sync" when you select one folder. Once you click sync, you can follow the instructions to track the folder on your local computer. Now you can mount it in a Docker image (create a soft link if the file contains spaces). 
+Log into Office 365, open OneDrive and from there find a SharePoint site on the left navigation part. Click on the folder that you want to use (e.g. HAI/Project/Biopharma_Shared_Workspace), then you will be able to see "sync". Once you click sync, you can follow the instructions to track the folder on your local computer. Now you can mount it in a Docker image (create a soft link if the file path contains spaces). Be reminded that SharePoint folders are accessible to everyone while OneDrive folders are only accessible to invited collaborators. 

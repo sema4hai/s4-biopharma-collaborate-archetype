@@ -12,7 +12,7 @@ services:
       # mount Biopharma_Shared_Workspace to a Docker folder under root directory
       # TODO: switch to PHI-compliant, e.g. a SharePoint folder, in future
       # make sure you have access to the shared workspace
-      - { PATH TO YOUR ONEDRIVE }/Biopharma_Shared_Workspace:/Biopharma_Shared_Workspace
+      - { PATH TO YOUR ONEDRIVE/SharePoint }/Biopharma_Shared_Workspace:/Biopharma_Shared_Workspace
     environment:
       # disable authentication
       - DISABLE_AUTH=true
@@ -32,7 +32,7 @@ services:
       - "8888:8888"
     volumes:
       - .:/s4-biopharma-collaborate_architype
-      - { PATH TO YOUR ONEDRIVE }/Biopharma_Shared_Workspace:/Biopharma_Shared_Workspace
+      - { PATH TO YOUR ONEDRIVE/SharePoint }/Biopharma_Shared_Workspace:/Biopharma_Shared_Workspace
     environment:
       - DSCA_PHI_HOST={ host }
       - DSCA_PHI_PORT={ port }
