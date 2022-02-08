@@ -44,3 +44,6 @@ Docker compose does not work well for file paths with spaces in them. In this ca
 ln -s {original path} {new path}
 ```
 For details, read the manual at `man ln`.
+
+### How to mount SharePoint folder in a Docker image?
+If you want to use SharePoint instead of OneDrive as the shared workspace, first create such a folder under one SharePoint site. Log into Office 365, open OneDrive and from there find a SharePoint site on the left navigation part. Then you will be able to see "sync" when you select one folder. Once you click sync, you can follow the instructions to track the folder on your local computer. Now you can mount it in a Docker image (create a soft link if the file contains spaces). 
