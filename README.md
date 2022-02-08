@@ -7,11 +7,11 @@ To use the repo structure for an actual project, copy all the files within this 
 
 ## How to use
 
-Start RStudio and/or Jupyter Notebook with Docker. Install Docker Desktop if you do not have it installed yet. Also install OneDrive and keep it running. You should have been shared with a OneDrive folder called "Biopharma_Shared_Workspace", which is a shared workspace for exchanging data.
+Install Docker Desktop and OneDrive if you do not have them installed yet. Start Docker and OneDrive, and keep them running. You should have been shared with a OneDrive folder called "Biopharma_Shared_Workspace", which is a shared workspace for exchanging data. An alternative to OneDrive is using SharePoint folder "HAI/Project/Biopharma_Shared_Workspace". The team needs to decide which workspace to use at the start of a project. 
 
-1. Replace the placeholders in "compose_template.yaml" with your information and save the file as "compose.yaml". Do not change the "compose_template.yaml" file (except if you really want to contribute to it). Never put your database credentials into "compose_template.yaml".  
+1. Replace the placeholders in "compose_template.yaml" with your information and save the file as "compose.yaml". Do not change the "compose_template.yaml" file (unless you really want to contribute to it, which is always welcomed). Never put your database credentials into "compose_template.yaml" (git tracks the template file but not "compose.yaml").   
 
-2. In your terminal, cd into the current repository and run the following command to start RStudio and/or Jupyter Notebook. 
+3. In your terminal, cd into the current repository and run the following command to start RStudio and/or Jupyter Notebook. 
     ```bash
     # start a container for RStudio
    docker compose up --build rstudio
@@ -20,16 +20,17 @@ Start RStudio and/or Jupyter Notebook with Docker. Install Docker Desktop if you
    # or start both
    docker compose up --build
     ```
-3. In your browser, access RStudio at "localhost:8787"; access Jupyter Notebook by the url printed in the terminal. 
+   You can ignore the "--build" option if your Dockerfiles are not changed. This can save you some time to start the services. 
+4. In your browser, access RStudio at "localhost:8787"; access Jupyter Notebook by the url printed in the terminal. 
   
-   You may start writing the analysis codes. Remember to save them before closing your browser, otherwise you lose your changes. Access the database with the database credentials specified in the docker compose.yaml file. Save your code to "/s4-biopharma-lsd" and your can write results to be shared with colleagues at "/Biopharma_Shared_Workspace". 
+   You may start writing the analysis codes. Remember to save them before closing your browser, otherwise you may lose your changes. Access the database with the database credentials specified in the docker compose.yaml file. Save your code to "/s4-biopharma-lsd" and your can write results to be shared with colleagues at "/Biopharma_Shared_Workspace". 
 
-4. To stop RStudio and/or Jupyter Notebook services, use "command + C". Then run the following command to remove the containers. 
+5. To stop RStudio and/or Jupyter Notebook services, use "command + C". Then run the following command to remove the containers. 
    ```bash 
    docker compose down
    ```
    
-5. Check in your code to Github in your terminal. You can do this step immediately after you saved code during developing (actually you should do this step frequently)
+6. Check in your code to Github in your terminal. You can do this step immediately after you saved code during developing (actually you should do this step frequently)
 
 ### What if I need to install a R/Python package?
 Install R or Python packages in the corresponding Dockerfiles: `Dockerfile_custom_[RStudio|Jupyter]`.  This will give us an overview of frequently used packages and make it possible to build pre-built images for future projects. 
