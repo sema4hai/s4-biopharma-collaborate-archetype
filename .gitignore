@@ -6,6 +6,9 @@ compose.yaml
 out/**
 !out/README.md
 
+# jupyter checkpoints
+**/.ipynb_checkpoints
+
 # mac files
 **/.DS_Store
 
