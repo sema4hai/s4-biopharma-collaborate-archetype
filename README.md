@@ -21,9 +21,9 @@ Install Docker Desktop and OneDrive if you do not have them installed yet. Start
    docker compose up --build
     ```
    You can ignore the "--build" option if your Dockerfiles are not changed. This can save you some time to start the services. 
-4. In your browser, access RStudio at "localhost:8787"; access Jupyter Notebook by the url printed in the terminal. 
+4. In your browser, access RStudio at "localhost:8787"; access Jupyter Notebook by at "localhost:8888" or the printed url in the console. 
   
-   You may start writing the analysis codes. Remember to save them before closing your browser, otherwise you may lose your changes. Access the database with the database credentials specified in the docker compose.yaml file. Save your code to "/s4-biopharma-lsd" and your can write results to be shared with colleagues at "/Biopharma_Shared_Workspace". 
+   You may start writing the analysis codes. Remember to save them before closing your browser, otherwise you may lose your changes. Access the database with the database credentials specified in the docker compose.yaml file. Save your code to the repo, and write intermediary results in the /out folder. Also remember to refer to repo files by relative paths. For results to be shared with colleagues, write them at "/Biopharma_Shared_Workspace" with absolute paths. 
 
 5. To stop RStudio and/or Jupyter Notebook services, use "command + C". Then run the following command to remove the containers. 
    ```bash 
