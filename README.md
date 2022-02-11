@@ -1,7 +1,13 @@
 # s4-biopharma-collaborate-architype
-The repo contains code for the analysis of lysosomal storage diseases in our database. It is intended to be an example for collaborative data science so it will not be used to support an actual project. 
+The repo contains code for the analysis of lysosomal storage diseases in our database. It is intended to be an example for collaborative data science to maximize code reproducibility so it will not be used to support an actual project. 
 
-The repo uses Docker and OneDrive/SharePoint to allow code sharing and data sharing during a data science project. It uses a docker compose file to start an RStudio server app and/or Jupyter Notebook app. The approach ensures that everyone has the identical development environment, including R/Python versions and third party packages. Both the code directory and data directory are mounted to the Docker containers, allowing everyone using the same absolute file path during development and maximize reproducibility with minimal code refactoring. 
+How to define code "reproducibility"? According to [Best Coding Practices to Ensure Reproducibility](http://griverorz.net/assets/pdf/good_practices-pst.pdf),
+
+> In the context of statistics and data science, reproducibility means that our code--a map from data to estimates or predictions--should not depend on the specific computational environment in which data processing and data analysis original took place.
+
+Therefore, the goal of reproducible code is to allow code developed by one colleague on one laptop seamlessly run on another laptop. To do this, one wants to make sure code are shared, data access are granted and/or data are shared, software (R/Python) versions are consistent, dependencies are taken care of. 
+
+The repo uses Docker and OneDrive/SharePoint to allow code sharing and data sharing during a data science project. It uses a docker compose file to start an RStudio server app and/or Jupyter Notebook app. The approach ensures that everyone has the identical development environment, including R/Python versions and third party packages. Both the code directory and data directory are mounted to the Docker containers, allowing everyone using the same file paths during development and maximize reproducibility with no code refactoring. 
 
 To use the repo structure for an actual project, copy all the files within this repo (including .gitignore but excluding .git) to your project repo, or download the latest release and rename the folder as desired.
 
